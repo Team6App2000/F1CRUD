@@ -1,0 +1,60 @@
+﻿@page
+@model F1CRUD.Pages.database.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Drivers[0].url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Drivers[0].givenName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Drivers[0].familyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Drivers[0].dateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Drivers[0].nationality)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Drivers) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.givenName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.familyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nationality)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.driverId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.driverId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.driverId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
