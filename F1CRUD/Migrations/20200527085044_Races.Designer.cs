@@ -3,14 +3,16 @@ using F1CRUD.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace F1CRUD.Migrations
 {
     [DbContext(typeof(F1CRUDContext))]
-    partial class F1CRUDContextModelSnapshot : ModelSnapshot
+    [Migration("20200527085044_Races")]
+    partial class Races
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,80 +116,11 @@ namespace F1CRUD.Migrations
                     b.ToTable("Races");
                 });
 
-            modelBuilder.Entity("F1CRUD.F1.Results", b =>
-                {
-                    b.Property<int>("resultId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("circuitId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("constructorId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("driverId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("grid")
-                        .HasColumnType("int");
-
-                    b.Property<int>("laps")
-                        .HasColumnType("int");
-
-                    b.Property<int>("number")
-                        .HasColumnType("int");
-
-                    b.Property<int>("points")
-                        .HasColumnType("int");
-
-                    b.Property<int>("position")
-                        .HasColumnType("int");
-
-                    b.Property<string>("raceName")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("resultId");
-
-                    b.HasIndex("circuitId");
-
-                    b.HasIndex("constructorId");
-
-                    b.HasIndex("driverId");
-
-                    b.HasIndex("raceName");
-
-                    b.ToTable("Results");
-                });
-
             modelBuilder.Entity("F1CRUD.F1.Races", b =>
                 {
                     b.HasOne("F1CRUD.F1.Circuits", "circuits")
                         .WithMany()
                         .HasForeignKey("circuitId");
-                });
-
-            modelBuilder.Entity("F1CRUD.F1.Results", b =>
-                {
-                    b.HasOne("F1CRUD.F1.Circuits", "circuits")
-                        .WithMany()
-                        .HasForeignKey("circuitId");
-
-                    b.HasOne("F1CRUD.F1.Constructors", "Constructors")
-                        .WithMany()
-                        .HasForeignKey("constructorId");
-
-                    b.HasOne("F1CRUD.F1.Drivers", "Drivers")
-                        .WithMany()
-                        .HasForeignKey("driverId");
-
-                    b.HasOne("F1CRUD.F1.Races", "Races")
-                        .WithMany()
-                        .HasForeignKey("raceName");
                 });
 #pragma warning restore 612, 618
         }

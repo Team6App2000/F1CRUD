@@ -1,0 +1,48 @@
+﻿@page
+@model F1CRUD.Pages.constructors.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Constructors[0].url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Constructors[0].name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Constructors[0].nationality)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Constructors) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nationality)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.constructorsId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.constructorsId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.constructorsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,90 @@
+﻿@page
+@model F1CRUD.Pages.results.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].Constructors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].Races)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].circuits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].Drivers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].points)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].grid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].laps)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Results) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Constructors.constructorsId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Races.raceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.circuits.circuitId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Drivers.driverId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.points)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.grid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.laps)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.resultId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.resultId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.resultId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

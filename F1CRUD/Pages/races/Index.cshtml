@@ -1,0 +1,66 @@
+﻿@page
+@model F1CRUD.Pages.races.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Races[0].circuits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Races[0].url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Races[0].season)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Races[0].round)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Races[0].date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Races[0].time)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Races) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.circuits.circuitId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.season)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.round)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.time)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.raceName">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.raceName">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.raceName">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,63 @@
+﻿@page
+@model F1CRUD.Pages.races.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Races</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Races.raceName" class="control-label"></label>
+                <input asp-for="Races.raceName" class="form-control" />
+                <span asp-validation-for="Races.raceName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Races.circuitId" class="control-label"></label>
+                <select asp-for="Races.circuitId" class ="form-control" asp-items="ViewBag.circuitId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Races.url" class="control-label"></label>
+                <input asp-for="Races.url" class="form-control" />
+                <span asp-validation-for="Races.url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Races.season" class="control-label"></label>
+                <input asp-for="Races.season" class="form-control" />
+                <span asp-validation-for="Races.season" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Races.round" class="control-label"></label>
+                <input asp-for="Races.round" class="form-control" />
+                <span asp-validation-for="Races.round" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Races.date" class="control-label"></label>
+                <input asp-for="Races.date" class="form-control" />
+                <span asp-validation-for="Races.date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Races.time" class="control-label"></label>
+                <input asp-for="Races.time" class="form-control" />
+                <span asp-validation-for="Races.time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
